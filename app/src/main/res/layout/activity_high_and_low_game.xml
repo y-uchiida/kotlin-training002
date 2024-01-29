@@ -56,12 +56,12 @@
         android:ems="10"
         android:inputType="number"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/btnAnswer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnAnswer"
         android:layout_width="88dp"
         android:layout_height="53dp"
         android:layout_marginTop="240dp"
