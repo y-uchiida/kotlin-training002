@@ -1,15 +1,21 @@
 package com.example.kotlin_training002
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.widget.Toolbar
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // toolbarを表示する
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         // カレンダーアクティビティに遷移するためのボタン要素を取得
         val btnOpenMyCalendarActivity: Button = findViewById(R.id.btnOpenMyCalendar)

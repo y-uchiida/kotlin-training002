@@ -3,18 +3,22 @@ package com.example.kotlin_training002
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.CalendarView
+import androidx.appcompat.widget.Toolbar
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MyCalendarActivity : AppCompatActivity() {
+class MyCalendarActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_calendar)
+
+        // toolbarを表示する
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         // MainActivity に遷移するボタン要素を取得
         val btnOpenMain: Button = findViewById(R.id.btnOpenMain)
