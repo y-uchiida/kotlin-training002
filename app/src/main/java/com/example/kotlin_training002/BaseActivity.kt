@@ -30,6 +30,10 @@ open class BaseActivity: AppCompatActivity() {
                 startActivity(Intent(this, MyCalendarActivity::class.java))
                 true
             }
+            R.id.menuItemHighAndLowGame -> {
+                startActivity(Intent(this, HighAndLowGameActivity::class.java))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

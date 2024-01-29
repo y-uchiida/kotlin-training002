@@ -4,4 +4,5 @@
 
     <item android:id="@+id/menuItemMain" android:title="Main" />
     <item android:id="@+id/menuItemMyCalendar" android:title="Calendar" />
+    <item android:id="@+id/menuItemHighAndLowGame" android:title="High And Low Game" />
 </menu>
