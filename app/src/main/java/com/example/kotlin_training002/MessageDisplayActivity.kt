@@ -5,11 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 
 class MessageDisplayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_message_display)
+
+        // トースト表示例
+        // onCreate 時に1度だけ実行され、「メッセージが送られました」と表示される
+        val toast = Toast.makeText(this, "メッセージが送られました", Toast.LENGTH_SHORT)
+        toast.show()
 
         // 送信されたメッセージを取得
         val message = intent.getStringExtra("message")
