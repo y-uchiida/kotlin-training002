@@ -34,6 +34,10 @@ open class BaseActivity: AppCompatActivity() {
                 startActivity(Intent(this, HighAndLowGameActivity::class.java))
                 true
             }
+            R.id.menuItemUserList -> {
+                startActivity(Intent(this, UserListActivity::class.java))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
