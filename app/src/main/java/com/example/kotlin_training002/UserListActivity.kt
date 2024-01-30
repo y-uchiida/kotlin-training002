@@ -1,7 +1,9 @@
 package com.example.kotlin_training002
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.widget.LinearLayout
+import android.widget.ScrollView
+import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -12,6 +14,14 @@ class UserListActivity : BaseActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityUserListBinding
+
+    private fun addMessage(message: String) {
+        val container = findViewById<LinearLayout>(R.id.UserListContainer)
+        val textView = TextView(this)
+        textView.text = message
+        textView.textSize = 24F
+        container.addView(textView)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +35,8 @@ class UserListActivity : BaseActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        binding.fab.setOnClickListener {
+            view -> addMessage("Hello, world!")
         }
     }
 
