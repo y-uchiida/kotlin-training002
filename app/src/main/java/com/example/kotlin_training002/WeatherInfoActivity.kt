@@ -3,9 +3,9 @@ package com.example.kotlin_training002
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class WheatherInfoActivity : AppCompatActivity() {
+class WeatherInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_wheather_info)
+        setContentView(R.layout.activity_weather_info)
     }
 }
