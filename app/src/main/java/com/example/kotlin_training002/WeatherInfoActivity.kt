@@ -7,6 +7,9 @@ import androidx.appcompat.widget.Toolbar
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.kotlin_training002.Entities.WeatherInfo
+import com.fasterxml.jackson.databind.ObjectMapper
+import org.json.JSONObject
 
 class WeatherInfoActivity : BaseActivity() {
 
@@ -17,6 +20,16 @@ class WeatherInfoActivity : BaseActivity() {
         textView.textSize = 16F
         container.addView(textView)
     }
+
+    private fun formatWeatherInfo(json: JSONObject): WeatherInfo {
+        // 取得したJSONとクラスのプロパティを関連づけ(マッピング)するための機能を備えた
+        // ObjectMapper インスタンスを生成
+        val mapper = ObjectMapper()
+
+        // ObjectMapper の機能を用いて、JSONの中からWeatherInfoクラスのプロパティ名と一致する値を当てはめる
+        return mapper.readValue(json.toString(), WeatherInfo::class.java)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weather_info)
@@ -33,8 +46,14 @@ class WeatherInfoActivity : BaseActivity() {
             url,
             null,
             {
-                // 通信成功時の処理: 取得したデータをaddMessage() メソッドを通じて画面に表示
-                json -> addMessage(json.toString())
+                // 通信成功時の処理:
+                // 取得したデータをWeatherInfo インスタンスに変換し、
+                // そのtextプロパティをaddMessage() メソッドを通じて画面に表示
+                // weatherInfo のtext プロパティは nullable なので、
+                // エルビス演算子を用いてnullチェックを行い、null の場合は "no data" を表示する
+                response ->
+                    val weatherInfo = formatWeatherInfo(response)
+                    addMessage(weatherInfo.text ?: "no data")
             },
             {
                 //通信失敗時の処理: エラーメッセージをaddMessage() メソッドを通じて画面に表示
