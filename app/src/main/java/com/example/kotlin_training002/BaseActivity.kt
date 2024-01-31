@@ -13,7 +13,6 @@ open class BaseActivity: AppCompatActivity() {
 
     // メニューのインフレート
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        Log.d("BaseActivity", "onCreateOptionsMenu on BaseActivity")
         menuInflater.inflate(R.menu.my_app_menu, menu)
         return true
     }
