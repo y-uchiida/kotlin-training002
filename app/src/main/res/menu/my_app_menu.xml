@@ -6,4 +6,5 @@
     <item android:id="@+id/menuItemMyCalendar" android:title="Calendar" />
     <item android:id="@+id/menuItemHighAndLowGame" android:title="High And Low Game" />
     <item android:id="@+id/menuItemUserList" android:title="User List (from API endpoint)" />
+    <item android:id="@+id/menuItemWeatherInfo" android:title="Weather Info (from API endpoint)" />
 </menu>

@@ -38,6 +38,10 @@ open class BaseActivity: AppCompatActivity() {
                 startActivity(Intent(this, UserListActivity::class.java))
                 true
             }
+            R.id.menuItemWeatherInfo -> {
+                startActivity(Intent(this, WeatherInfoActivity::class.java))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
