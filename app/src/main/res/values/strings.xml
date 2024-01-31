@@ -7,6 +7,11 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <!-- APIエンドポイントの通信先ホストの設定 -->
+    <string name="api_schema">http</string>
+    <string name="api_port">8080</string>
+    <string name="api_host">192.168.1.5</string>
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
