@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.kotlin_training002.UserListFragment"
+        android:name="com.example.kotlin_training002.components.user_list.UserListFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_user_list">
 
