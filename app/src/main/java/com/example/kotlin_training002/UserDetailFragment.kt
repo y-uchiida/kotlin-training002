@@ -1,17 +1,20 @@
 package com.example.kotlin_training002
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.kotlin_training002.databinding.FragmentUserDetailBinding
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 /**
@@ -29,7 +32,7 @@ class UserDetailFragment : Fragment() {
     private val args: UserDetailFragmentArgs by navArgs()
 
     /**
-     *
+     * ユーザーを更新する
      */
     private fun updateUser(id: Long, user: JSONObject) {
         val schema = getString(R.string.api_schema)
@@ -39,7 +42,7 @@ class UserDetailFragment : Fragment() {
 
         val requestQueue = Volley.newRequestQueue(context)
 
-        val jsonObjectRequest = object : StringRequest(
+        val updateRequest = object : StringRequest(
             Method.PUT, url,
             Response.Listener {
                 response ->
@@ -66,7 +69,35 @@ class UserDetailFragment : Fragment() {
             }
         }
 
-        requestQueue.add(jsonObjectRequest)
+        requestQueue.add(updateRequest)
+    }
+
+    /**
+     * ユーザー削除する
+     */
+    private suspend fun deleteUser(id: Long) {
+        val schema = getString(R.string.api_schema)
+        val host = getString(R.string.api_host)
+        val port = getString(R.string.api_port)
+        val url = "$schema://$host:$port/users/$id"
+
+        val requestQueue = Volley.newRequestQueue(context)
+
+        val deleteRequest = object : StringRequest(
+            Method.DELETE, url,
+            Response.Listener {
+                    response ->
+                val action = UserDetailFragmentDirections.actionUserDetailFragmentToUserListFragment()
+                findNavController().navigate(action)
+            },
+            Response.ErrorListener {
+                    error ->
+                Toast.makeText(this.context, "ユーザーの削除に失敗しました", Toast.LENGTH_SHORT).show()
+            }
+        ){}
+
+        requestQueue.add(deleteRequest)
+
     }
 
     override fun onCreateView(
@@ -98,6 +129,21 @@ class UserDetailFragment : Fragment() {
             // Add other fields as necessary
 
             updateUser(user.id!!, updatedUser)
+        }
+
+        binding.btnUserDelete.setOnClickListener {
+            // 削除の確認ダイアログを表示
+            AlertDialog.Builder(context).apply {
+                setTitle("ユーザー削除")
+                setMessage("本当にユーザーを削除しますか？")
+                setPositiveButton("削除") { _, _ ->
+                    // 削除を実行
+                    lifecycleScope.launch {
+                        deleteUser(user.id!!)
+                    }
+                }
+                setNegativeButton("キャンセル", null)
+            }.show()
         }
     }
 
