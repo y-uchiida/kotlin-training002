@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_training002.Entities.User
 import com.example.kotlin_training002.R
@@ -46,6 +47,13 @@ class UserListAdapter(
         // View(user_list_item) のuserNameText とuserEmailText に、user の値を渡す
         holder.userNameText.text = user.name
         holder.userEmailText.text = user.email
+
+        // リスト項目がクリックされたときの動作を設定
+        // ユーザーの詳細情報を表示する画面(UserDetailFragment) へ遷移させる
+        holder.itemView.setOnClickListener {
+            val action = UserListFragmentDirections.actionUserListFragmentToUserDetailFragment(user)
+            it.findNavController().navigate(action)
+        }
     }
 
     /**
