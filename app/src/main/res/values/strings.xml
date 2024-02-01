@@ -2,8 +2,8 @@
     <string name="app_name">Kotlin-training002</string>
     <string name="title_activity_user_list">UserListActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="user_list_fragment_label">User List</string>
+    <string name="user_detail_fragment_label">User Detail</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
