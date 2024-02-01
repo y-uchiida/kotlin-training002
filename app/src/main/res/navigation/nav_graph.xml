@@ -10,15 +10,9 @@
         android:name="com.example.kotlin_training002.components.user_list.UserListFragment"
         android:label="@string/user_list_fragment_label"
         tools:layout="@layout/fragment_user_list"
-        />
-
-    <fragment
-        android:id="@+id/user_list_item_fragment"
-        android:name="com.example.kotlin_training002.components.user_list.UserListItemFragment"
-        android:label="User List"
-        tools:layout="@layout/user_list_item">
+    >
         <action
-            android:id="@+id/action_user_list_item_fragment_to_userDetailFragment"
+            android:id="@+id/action_user_list_fragment_to_user_detail_fragment"
             app:destination="@id/user_detail_fragment" />
     </fragment>
     
@@ -27,7 +21,9 @@
         android:name="com.example.kotlin_training002.UserDetailFragment"
         android:label="@string/user_list_fragment_label"
         tools:layout="@layout/fragment_user_detail">
-
+        <argument
+            android:name="user"
+            app:argType="com.example.kotlin_training002.Entities.User" />
         <action
             android:id="@+id/action_UserDetailFragment_to_UserListFragment"
             app:destination="@id/user_list_fragment" />
