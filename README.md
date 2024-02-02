@@ -56,3 +56,24 @@ APIサーバーのリポジトリは以下です。
   以下のURLにアクセスして、APIサーバーが起動していることを確認します。
 
   <http://localhost:8080/hello>
+
+## API サーバーの接続先
+
+開発用マシンで APIサーバーとの連携を試す場合、Android 仮想端末上から localhost 指定でAPIサーバーにリクエストすることができません。  
+
+そのため、サンプルではお手元の開発用マシンのIPアドレスを指定してリクエストしています。
+
+API サーバーの接続先を変更する場合は、以下のファイルを修正してください。
+
+`app\src\main\res\values\strings.xml`
+
+```xml
+    <!-- APIエンドポイントの通信先ホストの設定 -->
+    <string name="api_schema">http</string>
+    <string name="api_port">8080</string>
+    <string name="api_host">192.168.1.5</string>
+```
+
+上記のようになっているので、 `api_host` の値をそれぞれの環境にあわせて設定してください。
+
+APIサーバーのポート番号を変更した場合は、 `api_port` の値も変更してください。
